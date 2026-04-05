@@ -1,0 +1,13 @@
+﻿<h3>Security Settings</h3>
+
+<form method="post" asp-action="ChangePassword">
+    <input type="password" name="oldPass" placeholder="Old Password" class="form-control mb-2" />
+    <input type="password" name="newPass" placeholder="New Password" class="form-control mb-2" />
+
+    <button class="btn btn-danger">Change Password</button>
+</form>
+
+@if (ViewBag.Message != null)
+{
+    <p class="text-success mt-2">@ViewBag.Message</p>
+}

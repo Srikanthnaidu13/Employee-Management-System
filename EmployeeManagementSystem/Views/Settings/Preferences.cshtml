@@ -1,0 +1,28 @@
+﻿<h3>System Preferences</h3>
+
+<form method="post" asp-action="SavePreferences">
+
+    <label>Theme</label>
+    <select name="theme" class="form-control mb-2">
+        <option>Light</option>
+        <option>Dark</option>
+    </select>
+
+    <label>Language</label>
+    <select name="language" class="form-control mb-2">
+        <option>English</option>
+        <option>Hindi</option>
+    </select>
+
+    <label>
+        <input type="checkbox" name="notifications" /> Email Notifications
+    </label>
+
+    <br />
+    <button class="btn btn-primary mt-2">Save</button>
+</form>
+
+@if (ViewBag.Message != null)
+{
+    <p class="text-success mt-2">@ViewBag.Message</p>
+}

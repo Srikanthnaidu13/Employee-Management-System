@@ -1,0 +1,66 @@
+﻿@{
+    ViewData["Title"] = "Dashboard";
+    var employees = ViewBag.RecentEmployees as List<EmployeeManagementSystem.Models.Employee>
+                    ?? new List<EmployeeManagementSystem.Models.Employee>();
+}
+
+<div class="container mt-4">
+
+    <h2 class="mb-4 fw-bold">HR Dashboard</h2>
+
+    <div class="row">
+
+        <!-- TOTAL EMPLOYEES -->
+        <div class="col-md-4">
+            <div class="card shadow rounded-3 text-center p-3">
+                <h5>Total Employees</h5>
+                <h2 class="text-primary">@ViewBag.TotalEmployees</h2>
+            </div>
+        </div>
+
+        <!-- ACTIVE EMPLOYEES -->
+        <div class="col-md-4">
+            <div class="card shadow rounded-3 text-center p-3">
+                <h5>Active Employees</h5>
+                <h2 class="text-success">@ViewBag.TotalEmployees</h2>
+            </div>
+        </div>
+
+        <!-- DEPARTMENTS -->
+        <div class="col-md-4">
+            <div class="card shadow rounded-3 text-center p-3">
+                <h5>Departments</h5>
+                <h2 class="text-warning">6</h2>
+            </div>
+        </div>
+
+    </div>
+
+    <hr class="mt-4" />
+
+    <h4 class="mt-4">Recent Employees</h4>
+
+    <table class="table table-bordered mt-3">
+
+        <thead class="table-dark">
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Department</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var emp in employees)
+            {
+                <tr>
+                    <td>@emp.Name</td>
+                    <td>@emp.Email</td>
+                    <td>@emp.Department</td>
+                </tr>
+            }
+        </tbody>
+
+    </table>
+
+</div>

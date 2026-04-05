@@ -1,0 +1,223 @@
+﻿@{
+    ViewData["Title"] = "Settings";
+}
+
+<style>
+    .settings-card {
+        border: none;
+        border-radius: 14px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        transition: all 0.2s ease;
+        height: 100%;
+    }
+
+        .settings-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+        }
+
+    .settings-icon {
+        font-size: 26px;
+        color: #0d6efd;
+        margin-bottom: 10px;
+    }
+
+    .settings-title {
+        font-weight: 600;
+        margin-bottom: 5px;
+    }
+
+    .settings-desc {
+        font-size: 13px;
+        color: #6c757d;
+        margin-bottom: 10px;
+    }
+
+    .settings-list {
+        font-size: 13px;
+        color: #6c757d;
+        padding-left: 18px;
+        margin-bottom: 15px;
+    }
+
+    .settings-btn {
+        font-size: 13px;
+        border-radius: 8px;
+        width: 100%;
+    }
+</style>
+
+<div class="container mt-4">
+
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h3 class="fw-bold">⚙️ System Settings</h3>
+    </div>
+
+    <div class="row g-4">
+
+        <!-- PROFILE -->
+        <div class="col-md-4">
+            <div class="card settings-card p-3">
+                <div class="settings-icon">
+                    <i class="bi bi-person-circle"></i>
+                </div>
+                <div class="settings-title">Profile Settings</div>
+                <div class="settings-desc">
+                    Manage your personal account information.
+                </div>
+
+                <ul class="settings-list">
+                    <li>Update Username</li>
+                    <li>Update Email</li>
+                    <li>Upload Profile Photo</li>
+                    <li>Change Password</li>
+                </ul>
+
+                <a asp-controller="Settings" asp-action="Profile" class="btn btn-primary settings-btn">
+                    Manage
+                </a>
+            </div>
+        </div>
+
+        <!-- SYSTEM PREF -->
+        <div class="col-md-4">
+            <div class="card settings-card p-3">
+                <div class="settings-icon">
+                    <i class="bi bi-sliders"></i>
+                </div>
+                <div class="settings-title">System Preferences</div>
+                <div class="settings-desc">
+                    Customize portal appearance and notifications.
+                </div>
+
+                <ul class="settings-list">
+                    <li>Theme (Light / Dark)</li>
+                    <li>Language Selection</li>
+                    <li>Email Notifications</li>
+                </ul>
+
+                <a asp-controller="Settings" asp-action="Preferences" class="btn btn-primary settings-btn">
+                    Configure
+                </a>
+            </div>
+        </div>
+
+        <!-- DEPARTMENTS -->
+        <div class="col-md-4">
+            <div class="card settings-card p-3">
+                <div class="settings-icon">
+                    <i class="bi bi-diagram-3"></i>
+                </div>
+                <div class="settings-title">Departments</div>
+                <div class="settings-desc">
+                    Manage organization departments.
+                </div>
+
+                <ul class="settings-list">
+                    <li>Add Department</li>
+                    <li>Edit Department</li>
+                    <li>Delete Department</li>
+                </ul>
+
+                <a asp-controller="Departments" asp-action="Index" class="btn btn-primary settings-btn">
+                    Manage
+                </a>
+            </div>
+        </div>
+
+        <!-- ROLE -->
+        <div class="col-md-4">
+            <div class="card settings-card p-3">
+                <div class="settings-icon">
+                    <i class="bi bi-shield-lock"></i>
+                </div>
+                <div class="settings-title">Role Management</div>
+                <div class="settings-desc">
+                    Control user roles and permissions.
+                </div>
+
+                <ul class="settings-list">
+                    <li>Admin</li>
+                    <li>HR Manager</li>
+                    <li>Employee</li>
+                </ul>
+
+                <a asp-controller="Settings" asp-action="Department" class="btn btn-primary settings-btn">
+                    Manage
+                </a>
+            </div>
+        </div>
+
+        <!-- SECURITY -->
+        <div class="col-md-4">
+            <div class="card settings-card p-3">
+                <div class="settings-icon">
+                    <i class="bi bi-lock"></i>
+                </div>
+                <div class="settings-title">Security</div>
+                <div class="settings-desc">
+                    Manage password and login activity.
+                </div>
+
+                <ul class="settings-list">
+                    <li>Change Password</li>
+                    <li>Enable 2FA</li>
+                    <li>View Login Activity</li>
+                </ul>
+
+                <a asp-controller="Settings" asp-action="Security" class="btn btn-primary settings-btn">
+                    Security Settings
+                </a>
+            </div>
+        </div>
+
+        <!-- SYSTEM INFO -->
+        <div class="col-md-4">
+            <div class="card settings-card p-3">
+                <div class="settings-icon">
+                    <i class="bi bi-info-circle"></i>
+                </div>
+                <div class="settings-title">System Information</div>
+                <div class="settings-desc">
+                    Application and system details.
+                </div>
+
+                <ul class="settings-list">
+                    <li>Application: EMS Portal</li>
+                    <li>Version: 1.0</li>
+                    <li>Database: SQL Server</li>
+                    <li>Developer: Srikanth</li>
+                </ul>
+
+                <button class="btn btn-outline-secondary settings-btn" disabled>
+                    View Details
+                </button>
+            </div>
+        </div>
+
+        <!-- DATA -->
+        <div class="col-md-4">
+            <div class="card settings-card p-3">
+                <div class="settings-icon">
+                    <i class="bi bi-database"></i>
+                </div>
+                <div class="settings-title">Data Management</div>
+                <div class="settings-desc">
+                    Manage employee data and backups.
+                </div>
+
+                <ul class="settings-list">
+                    <li>Export Employees to Excel</li>
+                    <li>Import Employees</li>
+                    <li>Backup Database</li>
+                </ul>
+
+                <a asp-controller="Settings" asp-action="Data" class="btn btn-primary settings-btn">
+                    Manage Data
+                </a>
+            </div>
+        </div>
+
+    </div>
+
+</div>

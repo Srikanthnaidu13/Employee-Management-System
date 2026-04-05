@@ -1,0 +1,135 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - EMS Portal</title>
+
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+
+<body class="app-bg">
+
+    <!-- Topbar -->
+    <header class="app-topbar border-bottom">
+        <div class="container-fluid px-3 px-md-4 d-flex align-items-center justify-content-between">
+
+            <!-- Logo -->
+            <div class="d-flex align-items-center gap-2">
+                <div class="app-logo">
+                    <i class="bi bi-buildings"></i>
+                </div>
+                <div>
+                    <div class="fw-bold lh-1">EMS Portal</div>
+                    <div class="text-muted small lh-1">Internal Management</div>
+                </div>
+            </div>
+
+            <!-- User Menu -->
+            <div class="d-flex align-items-center gap-2">
+
+                <span class="badge rounded-pill text-bg-light border d-none d-md-inline">
+                    <i class="bi bi-shield-check"></i> Secure
+                </span>
+
+                <div class="dropdown">
+                    <button class="btn btn-sm btn-outline-secondary dropdown-toggle" data-bs-toggle="dropdown">
+                        <i class="bi bi-person-circle"></i> User
+                    </button>
+
+                    <ul class="dropdown-menu dropdown-menu-end">
+
+                        <li>
+                            <a asp-controller="Settings" asp-action="Index" class="dropdown-item">
+                                <i class="bi bi-gear"></i> Settings
+                            </a>
+                        </li>
+
+                        <li><hr class="dropdown-divider"></li>
+
+                        <li>
+                            <a class="dropdown-item text-danger"
+                               asp-controller="Account"
+                               asp-action="Logout">
+                                <i class="bi bi-box-arrow-right"></i> Logout
+                            </a>
+                        </li>
+
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </header>
+
+    <!-- Layout -->
+    <div class="app-shell">
+
+        <!-- Sidebar -->
+        <aside class="app-sidebar border-end">
+
+            <div class="p-3">
+
+                <div class="text-uppercase text-muted small fw-semibold mb-2">
+                    Navigation
+                </div>
+
+                <!-- Dashboard -->
+                <a class="app-navlink @(ViewContext.RouteData.Values["controller"]?.ToString() == "Dashboard" 
+                                                       && ViewContext.RouteData.Values["action"]?.ToString() == "Index" 
+                                                       ? "active" : "")"
+                   asp-controller="Dashboard"
+                   asp-action="Index">
+                    <i class="bi bi-grid"></i> Dashboard
+                </a>
+
+                <!-- Employees -->
+                <a class="app-navlink @(ViewContext.RouteData.Values["controller"]?.ToString() == "Employees" 
+                                                       && ViewContext.RouteData.Values["action"]?.ToString() == "Index" 
+                                                       ? "active" : "")"
+                   asp-controller="Employees"
+                   asp-action="Index">
+                    <i class="bi bi-people"></i> Employees
+                </a>
+
+                <div class="text-uppercase text-muted small fw-semibold mt-4 mb-2">
+                    Quick Actions
+                </div>
+
+                <!-- Add Employee -->
+                <a class="app-navlink @(ViewContext.RouteData.Values["controller"]?.ToString() == "Employees" 
+                                                       && ViewContext.RouteData.Values["action"]?.ToString() == "Create" 
+                                                       ? "active" : "")"
+                   asp-controller="Employees"
+                   asp-action="Create">
+                    <i class="bi bi-person-plus"></i> Add Employee
+                </a>
+
+            </div>
+
+        </aside>
+
+        <!-- Main -->
+        <main class="app-main">
+
+            <div class="container-fluid px-3 px-md-4 py-4">
+                @RenderBody()
+            </div>
+
+            <footer class="app-footer border-top text-center text-muted small py-3">
+                © @DateTime.Now.Year — EMS Portal | Internship Project
+            </footer>
+
+        </main>
+
+    </div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+    @RenderSection("Scripts", required: false)
+
+</body>
+</html>

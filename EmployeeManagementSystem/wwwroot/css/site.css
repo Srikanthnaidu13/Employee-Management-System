@@ -1,0 +1,147 @@
+/* ===== Portal Theme ===== */
+:root {
+    --app-bg: #f5f7fb;
+    --card: #ffffff;
+    --text: #111827;
+    --muted: #6b7280;
+    --border: rgba(17,24,39,.10);
+    --shadow: 0 10px 25px rgba(17,24,39,.06);
+}
+
+.app-bg {
+    background: var(--app-bg);
+    color: var(--text);
+}
+
+.app-topbar {
+    background: #fff;
+    height: 64px;
+    display: flex;
+    align-items: center;
+}
+
+.app-logo {
+    width: 38px;
+    height: 38px;
+    border-radius: 14px;
+    background: #111827;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--shadow);
+}
+
+.app-shell {
+    display: flex;
+    min-height: calc(100vh - 64px);
+}
+
+.app-sidebar {
+    width: 270px;
+    background: #fff;
+    position: sticky;
+    top: 64px;
+    height: calc(100vh - 64px);
+}
+
+.app-main {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.app-footer {
+    background: #fff;
+}
+
+.app-navlink {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 12px;
+    border-radius: 14px;
+    color: var(--text);
+    text-decoration: none;
+    margin-bottom: 6px;
+    font-weight: 600;
+}
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: radial-gradient(600px 300px at 15% 10%, rgba(17,24,39,.06), transparent 60%), radial-gradient(600px 300px at 85% 20%, rgba(17,24,39,.05), transparent 55%);
+    pointer-events: none;
+    z-index: -1;
+}
+.app-sidebar {
+    border-radius: var(--radius);
+    margin: 14px;
+    height: calc(100vh - 64px - 28px);
+    box-shadow: var(--shadow-sm);
+}
+
+    .app-navlink:hover {
+        background: #f3f4f6;
+    }
+
+    .app-navlink.active {
+        background: #111827;
+        color: #fff;
+    }
+
+.card {
+    border: 1px solid var(--border) !important;
+    box-shadow: var(--shadow);
+}
+
+.rounded-4 {
+    border-radius: 18px !important;
+}
+
+.table thead th {
+    font-size: .8rem;
+    text-transform: uppercase;
+    letter-spacing: .04em;
+    color: var(--muted);
+    background: #fafafa;
+}
+
+.table td {
+    vertical-align: middle;
+}
+
+.form-control, .form-select {
+    border-radius: 14px;
+    padding: .65rem .85rem;
+    border: 1px solid var(--border);
+}
+
+.btn {
+    border-radius: 14px;
+    padding: .6rem .95rem;
+    font-weight: 600;
+}
+
+.btn-sm {
+    border-radius: 12px;
+    padding: .35rem .6rem;
+}
+
+.badge {
+    border-radius: 999px;
+    padding: .45em .75em;
+    font-weight: 700;
+}
+
+/* Mobile */
+@media (max-width: 991px) {
+    .app-sidebar {
+        display: none;
+    }
+
+    .app-shell {
+        display: block;
+    }
+}

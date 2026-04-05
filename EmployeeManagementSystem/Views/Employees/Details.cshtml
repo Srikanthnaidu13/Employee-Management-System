@@ -1,0 +1,15 @@
+﻿@model EmployeeManagementSystem.Models.Employee
+
+<h3>Employee Details</h3>
+
+<div class="card p-3">
+
+    <p><b>Name:</b> @Model.Name</p>
+    <p><b>Email:</b> @Model.Email</p>
+    <p><b>Department:</b> @Model.Department</p>
+    <p><b>Role:</b> @Model.Role</p>
+
+    <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary">Edit</a>
+    <a asp-action="Index" class="btn btn-secondary">Back</a>
+
+</div>

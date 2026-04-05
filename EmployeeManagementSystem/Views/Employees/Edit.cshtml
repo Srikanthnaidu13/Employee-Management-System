@@ -1,0 +1,131 @@
+﻿@model EmployeeManagementSystem.Models.Employee
+
+@{
+    ViewData["Title"] = "Edit Employee";
+}
+
+<h3 class="fw-bold mb-3">Edit Employee</h3>
+
+<form asp-action="Edit" method="post">
+
+    <input type="hidden" asp-for="Id" />
+
+    <!-- Name -->
+    <div class="mb-3">
+        <label asp-for="Name" class="form-label"></label>
+        <input asp-for="Name" class="form-control" />
+    </div>
+
+    <!-- Email -->
+    <div class="mb-3">
+        <label asp-for="Email" class="form-label"></label>
+        <input asp-for="Email" class="form-control" />
+    </div>
+
+    <!-- Department -->
+    <div class="mb-3">
+        <label class="form-label">Department</label>
+        <select id="department" asp-for="Department" class="form-select">
+            <option value="">Select Department</option>
+
+            <option value="Engineering">Engineering</option>
+            <option value="Human Resources">Human Resources</option>
+            <option value="Finance">Finance</option>
+            <option value="Marketing">Marketing</option>
+            <option value="Operations">Operations</option>
+            <option value="IT Support">IT Support</option>
+
+        </select>
+    </div>
+
+    <!-- Role -->
+    <div class="mb-3">
+        <label class="form-label">Role</label>
+        <select id="role" asp-for="Role" class="form-select">
+            <option value="@Model.Role">@Model.Role</option>
+        </select>
+    </div>
+
+    <!-- Buttons -->
+    <button type="submit" class="btn btn-primary">
+        <i class="bi bi-check-circle"></i> Update
+    </button>
+
+    <a asp-action="Index" class="btn btn-secondary">
+        Cancel
+    </a>
+
+</form>
+
+<script>
+
+    const rolesByDepartment = {
+
+        "Engineering": [
+            "Intern",
+            "Software Engineer",
+            "QA Engineer",
+            "DevOps Engineer"
+        ],
+
+        "Human Resources": [
+            "Intern",
+            "HR Manager",
+            "Recruiter",
+            "HR Executive"
+        ],
+
+        "Finance": [
+            "Intern",
+            "Accountant",
+            "Financial Analyst",
+            "Auditor"
+        ],
+
+        "Marketing": [
+            "Intern",
+            "Marketing Manager",
+            "SEO Specialist",
+            "Content Strategist"
+        ],
+
+        "Operations": [
+            "Intern",
+            "Operations Manager",
+            "Logistics Coordinator"
+        ],
+
+        "IT Support": [
+            "Intern",
+            "IT Support Engineer",
+            "System Administrator",
+            "Network Engineer"
+        ]
+    };
+
+    const departmentDropdown = document.getElementById("department");
+    const roleDropdown = document.getElementById("role");
+
+    departmentDropdown.addEventListener("change", function () {
+
+        const selectedDepartment = this.value;
+
+        roleDropdown.innerHTML = '<option value="">Select Role</option>';
+
+        if (rolesByDepartment[selectedDepartment]) {
+
+            rolesByDepartment[selectedDepartment].forEach(function (role) {
+
+                const option = document.createElement("option");
+                option.value = role;
+                option.text = role;
+
+                roleDropdown.appendChild(option);
+
+            });
+
+        }
+
+    });
+
+</script>
